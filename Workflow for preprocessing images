@@ -1,0 +1,8 @@
+To classify images with a convolutional neural network, each image needs to have the size specified by the network's input layer. 
+
+Images usually require simple preprocessing before they can be classified. You can preprocess your images individually, 
+but it is common to perform the same preprocessing steps on the entire data set. It is more efficient to apply these steps to 
+the entire datastore.
+
+We can perform basic preprocessing with the augmentedImageDatastore function, which takes an image datastore and an image size as an input.
+The datastore can be passed to the classify function.
