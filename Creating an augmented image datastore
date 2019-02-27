@@ -1,0 +1,29 @@
+The imageDatastore function is used to create a datastore. You can use wildcard characters such as * to specify multiple files.
+
+%Create an image datastore named imds that refers to the image files with the extension .jpg in the current folder.%
+
+imds = imageDatastore('*.jpg')
+
+
+%An augmented image datastore can perform simple preprocessing on an entire collection images. To create this datastore, 
+use the augmentedImageDatastore function using your network's image input size as input.
+              auds = augmentedImageDatastore([r c],imds)%
+             
+             
+%Create an augmented image datastore from imds that will resize the images to 227-by-227. Name the new datastore auds.%
+
+auds = augmentedImageDatastore([227,227],imds)
+
+%ou can use the augmented image datastore as input to the classify function. Before each image is classified, it will be preprocessed 
+using the methods that you specified when you created the datastore. %
+
+%Classify the images in auds using the classify function using the network stored in the variable net. Store the predictions in a 
+variable preds%
+
+preds = classify(net,auds)
+
+%
+Resizing is one of the most common preprocessing steps when classifying images. 
+
+Augmented image datastores can perform a variety of other preprocessing methods like using the augmentedImageDatastore function to 
+convert grayscale images to RGB images.%
