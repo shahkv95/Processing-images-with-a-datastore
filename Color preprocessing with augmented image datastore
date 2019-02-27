@@ -1,0 +1,17 @@
+%We can use the montage function to display all the images.%
+
+montage(imds)
+
+
+%We can convert these images to a 3-D array by setting the ColorPreprocessing option when you create an augmented image datastore.
+auds = augmentedImageDatastore([n m],...imds,'ColorPreprocessing','gray2rgb')
+
+This will replicate the grayscale image three times to create a 3-D array. If imgray is a matrix that represents a grayscale image, 
+the processed image will be a 3-D array that represents a color (RGB) image.%
+
+auds = augmentedImageDatastore([227,227],imds,'ColorPreprocessing','gray2rgb')
+
+%Classify the images in auds using the classify function. AlexNet is stored in the variable net. 
+Store the predictions in a variable preds.%
+
+preds = classify(net,auds)
